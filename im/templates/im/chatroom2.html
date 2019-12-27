@@ -1,0 +1,50 @@
+{% extends "im/base.html" %}
+
+{% block content %}
+
+<div id="container">
+    <aside id='user_list'> 
+        <!-- 联系人名单 -->
+        <header>
+            <input type="text" placeholder="search">
+        </header>
+        <ul id="username_list">
+        
+        </ul>
+    </aside>
+    <main id="main">
+        <header>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
+            <div>
+                <h2>{{ user.username }}</h2>
+                <h3>just a test</h3>
+            </div>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
+        </header>
+        <ul id="chat">
+            <a href="#"  id="history" class="history" onclick="gethistory()">history message</a>
+        </ul>
+        <footer>
+            <textarea placeholder="Type your message" id='inpumessage' onkeyup="if(event.keyCode == 13){post_message()}"></textarea>
+            <div id="emoji" style="display: none;">
+                <span id='e1' onclick="check_emoji(this)" ><img src="/media/emoji/face-with-tears-of-joy_1f602(1).png"></span>
+                <span id='e2' onclick="check_emoji(this)" ><img src="/media/emoji/face-with-tears-of-joy_1f602.png"></span>
+                <span id='e3' onclick="check_emoji(this)" ><img src="/media/emoji/grinning-face_1f600.png"></span>
+                <span id='e4' onclick="check_emoji(this)" ><img src="/media/emoji/smiling-face-with-open-mouth-and-cold-sweat_1f605.png"></span>
+            </div>
+            <input maxlength="80" name="sender" type="text" style="display: none;" placeholder="消息发送"> 
+            <div>
+                <span><button name="sender" id='messagebutton' onclick="post_message()">Message</button></span>
+                <span><button name="sendere" id='emojibutton'  onclick="emoji()">Emoji</button></span>
+                <span>
+                    <button id ="select_file" onclick="related_image()">Select Image</button>
+                    <input type="file" id="fileinput" name='file' style="display: none;" accept="image/*" />
+                </span>
+            </div>
+                
+        </footer>
+    </main>
+</div>
+
+
+{% endblock %}
